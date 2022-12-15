@@ -1,0 +1,59 @@
+{
+	"name": "directus-extension-ai-pack",
+	"version": "1.0.0",
+	"keywords": [
+		"directus",
+		"directus-extension",
+		"directus-custom-bundle"
+	],
+	"directus:extension": {
+		"type": "bundle",
+		"path": {
+			"app": "dist/app.js",
+			"api": "dist/api.js"
+		},
+		"entries": [
+			{
+				"type": "operation",
+				"name": "dall-e-operation",
+				"source": {
+					"app": "src/dall-e-operation/app.js",
+					"api": "src/dall-e-operation/api.js"
+				}
+			},
+			{
+				"type": "operation",
+				"name": "stable-diffusion-img2img-operation",
+				"source": {
+					"app": "src/stable-diffusion-img2img-operation/app.ts",
+					"api": "src/stable-diffusion-img2img-operation/api.ts"
+				}
+			},
+			{
+				"type": "operation",
+				"name": "stable-diffusion-txt2img-operation",
+				"source": {
+					"app": "src/stable-diffusion-txt2img-operation/app.ts",
+					"api": "src/stable-diffusion-txt2img-operation/api.ts"
+				}
+			},
+			{
+				"type": "hook",
+				"name": "apply-settings",
+				"source": "src/apply-settings/index.js"
+			}
+		],
+		"host": "^9.21.0"
+	},
+	"scripts": {
+		"add": "directus-extension add",
+		"build": "directus-extension build",
+		"dev": "directus-extension build -w --no-minify"
+	},
+	"devDependencies": {
+		"@directus/extensions-sdk": "9.21.0",
+		"@types/node": "^18.11.15",
+		"typescript": "^4.9.4",
+		"vue": "^3.2.45"
+	}
+}
