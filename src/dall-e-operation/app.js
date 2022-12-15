@@ -1,7 +1,7 @@
 export default {
 	id: 'dall-e-text2img',
 	name: 'DALL-E Image Generator',
-	icon: 'box',
+	icon: 'image',
 	description: 'DALL-E Image Generator!',
 	overview: ({ text }) => [
 		{

@@ -23,14 +23,6 @@
 			},
 			{
 				"type": "operation",
-				"name": "stable-diffusion-img2img-operation",
-				"source": {
-					"app": "src/stable-diffusion-img2img-operation/app.ts",
-					"api": "src/stable-diffusion-img2img-operation/api.ts"
-				}
-			},
-			{
-				"type": "operation",
 				"name": "stable-diffusion-txt2img-operation",
 				"source": {
 					"app": "src/stable-diffusion-txt2img-operation/app.ts",
@@ -55,5 +47,9 @@
 		"@types/node": "^18.11.15",
 		"typescript": "^4.9.4",
 		"vue": "^3.2.45"
+	},
+	"dependencies": {
+		"node-fetch": "^3.3.0",
+		"openai": "^3.1.0"
 	}
 }
