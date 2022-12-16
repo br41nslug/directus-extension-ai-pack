@@ -7,7 +7,6 @@ export class StabilityClient {
     }
     async txt2img(prompt: string, options: Record<string, any>={}) {
         const url = `${this.api_url}/v1alpha/generation/${this.engine}/text-to-image`
-
         const response = await fetch(url, {
             method: 'POST',
             headers: {
@@ -16,13 +15,12 @@ export class StabilityClient {
                 Authorization: 'Bearer ' + this.api_key,
             },
             body: JSON.stringify({
-                cfg_scale: 7,
                 clip_guidance_preset: 'FAST_BLUE',
-                height: 512,
-                width: 512,
                 samples: 1,
-                steps: 50,
-                ...options,
+                width: options.width ?? 512, 
+                height: options.height ?? 512,
+                cfg_scale: options.cfg_scale ?? 7,
+                steps: options.steps ?? 50,
                 text_prompts: [
                     {
                         text: prompt,

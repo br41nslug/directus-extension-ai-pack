@@ -8,10 +8,10 @@ export default defineOperationApp({
 	name: 'Stable Diffusion Image Generator',
 	icon: 'image',
 	description: 'Stable Diffusion Image Generator',
-	overview: ({ text, engine }: Options) => [
+	overview: ({ prompt, engine }: Options) => [
 		{
-			label: 'Text',
-			text: text,
+			label: 'Prompt',
+			text: prompt,
 		},
 		{
 			label: 'Engine',
@@ -20,12 +20,84 @@ export default defineOperationApp({
 	],
 	options: [
 		{
-			field: 'text',
-			name: 'Text',
+			field: 'prompt',
+			name: 'Prompt',
 			type: 'string',
 			meta: {
 				width: 'full',
 				interface: 'input',
+			},
+		},
+		{
+			field: "width",
+			name: "Width",
+			type: "integer",
+			meta: {
+				width: 'half',
+				interface: 'slider',
+				options: {
+					minValue: 512,
+					maxValue: 1024,
+					stepInterval: 64,
+					alwaysShowValue: true
+				}
+			},
+			schema: {
+				default_value: 512
+			},
+		},
+		{
+			field: "height",
+			name: "Height",
+			type: "integer",
+			meta: {
+				width: 'half',
+				interface: 'slider',
+				options: {
+					minValue: 512,
+					maxValue: 1024,
+					stepInterval: 64,
+					alwaysShowValue: true
+				}
+			},
+			schema: {
+				default_value: 512
+			},
+		},
+		{
+			field: "cfg_scale",
+			name: "CFG Scale",
+			type: "integer",
+			meta: {
+				width: 'half',
+				interface: 'slider',
+				options: {
+					minValue: 0,
+					maxValue: 20,
+					stepInterval: 1,
+					alwaysShowValue: true
+				}
+			},
+			schema: {
+				default_value: 7
+			},
+		},
+		{
+			field: "steps",
+			name: "Steps",
+			type: "integer",
+			meta: {
+				width: 'half',
+				interface: 'slider',
+				options: {
+					minValue: 10,
+					maxValue: 150,
+					stepInterval: 1,
+					alwaysShowValue: true
+				}
+			},
+			schema: {
+				default_value: 50
 			},
 		},
 		{
@@ -46,7 +118,9 @@ export default defineOperationApp({
 			type: 'string',
 			meta: {
 				width: 'full',
-				interface: 'input',
+				interface: 'input-hash',
+				special: [ 'hash' ],
+				options: { masked: true },
 			},
 		},
 	],

@@ -28,11 +28,6 @@
 					"app": "src/stable-diffusion-txt2img-operation/app.ts",
 					"api": "src/stable-diffusion-txt2img-operation/api.ts"
 				}
-			},
-			{
-				"type": "hook",
-				"name": "apply-settings",
-				"source": "src/apply-settings/index.js"
 			}
 		],
 		"host": "^9.21.0"

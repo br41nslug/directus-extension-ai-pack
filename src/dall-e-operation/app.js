@@ -25,7 +25,9 @@ export default {
 			type: 'string',
 			meta: {
 				width: 'full',
-				interface: 'input',
+				interface: 'input-hash',
+				special: [ 'hash' ],
+				options: { masked: true },
 			},
 		},
 	],
