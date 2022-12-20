@@ -27,7 +27,7 @@ export const groupField = {
 export const openAIField = {
     "collection": "directus_settings",
     "field": "Open_AI_API_Key",
-    "type": "hash",
+    "type": "string",
     "schema": {
         "name": "Open_AI_API_Key",
         "table": "directus_settings",
@@ -48,8 +48,8 @@ export const openAIField = {
     "meta": {
         "collection": "directus_settings",
         "field": "Open_AI_API_Key",
-        "special": ["hash"],
-        "interface": "input-hash",
+        "special": null,
+        "interface": "input",
         "options": { "masked": true },
         "display": null,
         "display_options": null,
@@ -69,7 +69,7 @@ export const openAIField = {
 export const stabilityAIField = {
     "collection": "directus_settings",
     "field": "Stability_AI_API_Key",
-    "type": "hash",
+    "type": "string",
     "schema": {
         "name": "Stability_AI_API_Key",
         "table": "directus_settings",
@@ -90,8 +90,8 @@ export const stabilityAIField = {
     "meta": {
         "collection": "directus_settings",
         "field": "Stability_AI_API_Key",
-        "special": ["hash"],
-        "interface": "input-hash",
+        "special": null,
+        "interface": "input",
         "options": { "masked": true },
         "display": null,
         "display_options": null,

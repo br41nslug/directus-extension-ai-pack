@@ -13,6 +13,10 @@ export default defineOperationApp({
 			text: prompt,
 		},
 		{
+			label: 'Save To File Library',
+			text: save_assets ? 'Yes' : 'No',
+		},
+		{
 			label: 'Engine',
 			text: engine,
 		},
@@ -39,7 +43,8 @@ export default defineOperationApp({
 					maxValue: 1024,
 					stepInterval: 64,
 					alwaysShowValue: true
-				}
+				},
+				group: 'advanced',
 			},
 			schema: {
 				default_value: 512
@@ -57,7 +62,8 @@ export default defineOperationApp({
 					maxValue: 1024,
 					stepInterval: 64,
 					alwaysShowValue: true
-				}
+				},
+				group: 'advanced',
 			},
 			schema: {
 				default_value: 512
@@ -75,7 +81,8 @@ export default defineOperationApp({
 					maxValue: 20,
 					stepInterval: 1,
 					alwaysShowValue: true
-				}
+				},
+				group: 'advanced',
 			},
 			schema: {
 				default_value: 7
@@ -93,7 +100,8 @@ export default defineOperationApp({
 					maxValue: 150,
 					stepInterval: 1,
 					alwaysShowValue: true
-				}
+				},
+				group: 'advanced',
 			},
 			schema: {
 				default_value: 50
@@ -103,12 +111,16 @@ export default defineOperationApp({
 			field: 'engine',
 			name: 'Engine',
 			type: 'string',
+			schema: {
+				default_value: 'stable-diffusion-512-v2-1',
+			},
 			meta: {
 				width: 'full',
 				interface: 'select-dropdown',
 				options: {
 					choices: STABILITY_ENGINES
 				},
+				group: 'advanced',
 			},
 		},
 		{
@@ -119,7 +131,25 @@ export default defineOperationApp({
 				width: 'full',
 				interface: 'input',
 				special: null,
-				options: { masked: true },
+				options: { 
+					masked: true,
+                    placeholder: 'Use globally set key...',
+				},
+				group: 'advanced',
+			},
+		},
+		{
+			field: 'advanced',
+			name: 'Advanced Settings',
+			type: 'alias',
+			meta: {
+				field: 'advanced',
+				special: ['alias', 'no-data', 'group'],
+				interface: 'group-detail',
+				options: {
+					start: 'closed',
+				},
+				width: 'full',
 			},
 		},
 	],

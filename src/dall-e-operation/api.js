@@ -1,24 +1,36 @@
 import { defineOperationApi } from '@directus/extensions-sdk';
 import { Configuration, OpenAIApi } from "openai";
+import { openAIField } from '../configuration/fields';
+import { getSetting } from '../lib/util';
 
-// add extra configuration
 export default defineOperationApi({
 	id: 'dall-e-operation',
-	handler: async ({ text, api_key }, { services, database, getSchema }) => {
-		const { FilesService } = services;
-		console.log(`prompt: ${text}`);
-		const configuration = new Configuration({ apiKey: api_key });
+	handler: async ({ text, api_key, amount=1, size='1024x1024', save_assets=true }, { services, database, getSchema }) => {
+		const { FilesService, SettingsService } = services;
+		const schema = await getSchema();
+		const settings = new SettingsService({ schema, knex: database });
+		const files = new FilesService({ schema, knex: database }); 
+
+		const configuration = new Configuration({ 
+			apiKey: await getSetting(settings, openAIField.field, api_key)
+		});
 		const openai = new OpenAIApi(configuration);
 		const response = await openai.createImage({
-			prompt: text,
-			n: 1,
-			size: "1024x1024",
+			prompt: text, n: amount, size,
 		});
-		const url = response.data.data[0].url;
-		console.log(`image url: ${url}`);
-		const files = new FilesService({ schema: await getSchema(), knex: database, accountability: { admin: true } });
-		const id = await files.importOne(url);
-		console.log(`new id: ${id}`);
-		return { url, id };
+		let result = [], ids = [];
+		for (let i = 0; i < amount; i++) {
+			const url = response.data.data[i].url;
+			console.log(`image url: ${url}`);
+			result.push(url);
+			if (save_assets) {
+				const id = await files.importOne(url);
+				ids.push(id);
+			}
+		}
+		if (amount === 1) {
+			return { url: result[0], id: ids[0] };
+		}
+		return { url: result, id: ids };
 	},
 });
