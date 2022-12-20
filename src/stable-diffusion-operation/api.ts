@@ -13,7 +13,7 @@ export type Options = {
 };
 
 export default defineOperationApi<Options>({
-	id: 'stability-text2img',
+	id: 'stable-diffusion-operation',
 	handler: async (
 		{ prompt, engine, api_key, width, height, cfg_scale, steps }: Options, 
 		{ services, database, getSchema }: any

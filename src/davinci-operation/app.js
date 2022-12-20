@@ -1,8 +1,10 @@
-export default {
-	id: 'dall-e-operation',
-	name: 'DALL-E Image Generator',
-	icon: 'image',
-	description: 'DALL-E Image Generator!',
+import { defineOperationApp } from '@directus/extensions-sdk';
+
+export default defineOperationApp({
+	id: 'davinci-operation',
+	name: 'Davinci Text Generator',
+	icon: 'textsms',
+	description: 'Davinci Text Generator!',
 	overview: ({ text }) => [
 		{
 			label: 'Text',
@@ -31,4 +33,4 @@ export default {
 			},
 		},
 	],
-};
+});

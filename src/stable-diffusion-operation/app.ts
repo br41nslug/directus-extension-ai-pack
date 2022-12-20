@@ -4,11 +4,11 @@ import { Options } from './api';
 
 
 export default defineOperationApp({
-	id: 'stability-text2img',
+	id: 'stable-diffusion-operation',
 	name: 'Stable Diffusion Image Generator',
 	icon: 'image',
 	description: 'Stable Diffusion Image Generator',
-	overview: ({ prompt, engine }: Options) => [
+	overview: ({ prompt, engine }: Options) => ([
 		{
 			label: 'Prompt',
 			text: prompt,
@@ -17,7 +17,7 @@ export default defineOperationApp({
 			label: 'Engine',
 			text: engine,
 		},
-	],
+	]),
 	options: [
 		{
 			field: 'prompt',

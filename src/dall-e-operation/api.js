@@ -1,6 +1,9 @@
+import { defineOperationApi } from '@directus/extensions-sdk';
 import { Configuration, OpenAIApi } from "openai";
-export default {
-	id: 'dall-e-text2img',
+
+// add extra configuration
+export default defineOperationApi({
+	id: 'dall-e-operation',
 	handler: async ({ text, api_key }, { services, database, getSchema }) => {
 		const { FilesService } = services;
 		console.log(`prompt: ${text}`);
@@ -18,4 +21,4 @@ export default {
 		console.log(`new id: ${id}`);
 		return { url, id };
 	},
-};
+});

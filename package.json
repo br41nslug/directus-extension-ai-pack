@@ -23,14 +23,22 @@
 			},
 			{
 				"type": "operation",
-				"name": "stable-diffusion-txt2img-operation",
+				"name": "stable-diffusion-operation",
 				"source": {
-					"app": "src/stable-diffusion-txt2img-operation/app.ts",
-					"api": "src/stable-diffusion-txt2img-operation/api.ts"
+					"app": "src/stable-diffusion-operation/app.ts",
+					"api": "src/stable-diffusion-operation/api.ts"
+				}
+			},
+			{
+				"type": "operation",
+				"name": "davinci-operation",
+				"source": {
+					"app": "src/davinci-operation/app.js",
+					"api": "src/davinci-operation/api.js"
 				}
 			}
 		],
-		"host": "^9.21.0"
+		"host": "^9.21.2"
 	},
 	"scripts": {
 		"add": "directus-extension add",
@@ -38,8 +46,8 @@
 		"dev": "directus-extension build -w --no-minify"
 	},
 	"devDependencies": {
-		"@directus/extensions-sdk": "9.21.0",
-		"@types/node": "^18.11.15",
+		"@directus/extensions-sdk": "9.21.2",
+		"@types/node": "^18.11.17",
 		"typescript": "^4.9.4",
 		"vue": "^3.2.45"
 	},
