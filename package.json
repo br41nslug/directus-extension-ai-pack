@@ -36,6 +36,11 @@
 					"app": "src/davinci-operation/app.js",
 					"api": "src/davinci-operation/api.js"
 				}
+			},
+			{
+				"type": "hook",
+				"name": "configuration",
+				"source": "src/configuration/index.js"
 			}
 		],
 		"host": "^9.21.2"
