@@ -1,6 +1,5 @@
 import { defineOperationApp } from '@directus/extensions-sdk';
-import { STABILITY_ENGINES } from './constants';
-import { Options } from './api';
+import { STABILITY_ENGINES } from '../lib/constants.js';
 
 
 export default defineOperationApp({
@@ -8,7 +7,7 @@ export default defineOperationApp({
 	name: 'Stable Diffusion Image Generator',
 	icon: 'image',
 	description: 'Stable Diffusion Image Generator',
-	overview: ({ prompt, engine }: Options) => ([
+	overview: ({ prompt, engine }) => ([
 		{
 			label: 'Prompt',
 			text: prompt,
@@ -114,12 +113,12 @@ export default defineOperationApp({
 		},
 		{
 			field: 'api_key',
-			name: 'OpenAI API Key',
+			name: 'OpenAI API Key Override',
 			type: 'string',
 			meta: {
 				width: 'full',
-				interface: 'input-hash',
-				special: [ 'hash' ],
+				interface: 'input',
+				special: null,
 				options: { masked: true },
 			},
 		},

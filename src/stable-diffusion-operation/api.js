@@ -2,21 +2,11 @@ import { defineOperationApi } from '@directus/extensions-sdk';
 import { randomUUID } from 'crypto';
 import { StabilityClient } from './client';
 
-export type Options = {
-	prompt: string;
-	engine: string;
-	api_key: string;
-	width: number;
-	height: number;
-	cfg_scale: number;
-	steps: number;
-};
-
-export default defineOperationApi<Options>({
+export default defineOperationApi({
 	id: 'stable-diffusion-operation',
 	handler: async (
-		{ prompt, engine, api_key, width, height, cfg_scale, steps }: Options, 
-		{ services, database, getSchema }: any
+		{ prompt, engine, api_key, width, height, cfg_scale, steps }, 
+		{ services, database, getSchema }
 	) => {
 		const { FilesService } = services;
 		const stability = new StabilityClient(api_key, engine);
