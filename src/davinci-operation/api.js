@@ -10,10 +10,10 @@ export default defineOperationApi({
 		const schema = await getSchema();
 		const settings = new SettingsService({ schema, knex: database });
 
-		const configuration = new Configuration({ 
-			apiKey: await getSetting(settings, openAIField.field, api_key)
-		});
+		const apiKey = await getSetting(settings, openAIField.field, api_key);
+		const configuration = new Configuration({ apiKey });
 		const openai = new OpenAIApi(configuration);
+		
 		const response = await openai.createCompletion({
 			model: "text-davinci-003", prompt: text, temperature,
 			max_tokens, top_p, frequency_penalty, presence_penalty

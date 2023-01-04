@@ -13,10 +13,6 @@ export default defineOperationApp({
 			text: prompt,
 		},
 		{
-			label: 'Save To File Library',
-			text: save_assets ? 'Yes' : 'No',
-		},
-		{
 			label: 'Engine',
 			text: engine,
 		},

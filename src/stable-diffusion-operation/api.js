@@ -15,7 +15,9 @@ export default defineOperationApi({
 		const settings = new SettingsService({ schema, knex: database });
 		const files = new FilesService({ schema, knex: database }); 
 
-		const stability = new StabilityClient(await getSetting(settings, stabilityAIField.field, api_key), engine);
+		const apiKey = await getSetting(settings, stabilityAIField.field, api_key);
+		const stability = new StabilityClient(apiKey, engine);
+		
 		const response = await stability.txt2img(prompt, {
 			width, height, cfg_scale, steps
 		});
