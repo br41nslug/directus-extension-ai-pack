@@ -11,7 +11,7 @@ A small bundle of Flow Operations which enable interaction with the [OpenAI](htt
 The package is published to npm:
 `npm install directus-extension-ai-operation-bundle`
 
-**Manual Installation**
+**Manual Installation (should be possible on the next release)**
 - Download or fork the repository
 - Install the requirements\
   `npm install`
@@ -25,8 +25,14 @@ The package is published to npm:
 
 ### Stable Diffusion Operation
 
-This operation allow you generate images from text using the Stable Diffusion models with the [Stability.ai API](https://platform.stability.ai/).
+This operation allow you generate images from text using the Stable Diffusion models with the [Stability.ai API](https://platform.stability.ai/) taking a `prompt` as input and saves the resulting image to the file library returning its ID as output.
 ![Demo](examples/stable-diffusion-demo.gif)
+
+**Output**\
+An object containing the ID of the resulting image file.
+```json
+{ "id": "[UUID]" }
+```
 
 **Configuration Options**\
 I am by no means an expert in what any of these model specific settings do so please check out the [stability docs](https://api.stability.ai/docs) for that.
@@ -42,8 +48,19 @@ I am by no means an expert in what any of these model specific settings do so pl
 
 ### DALL-E Operation
 
-Similar to the Stable Diffusion operation this allows you to generate images from text but using the OpenAI DALL-E models instead with the [OpenAI API](https://beta.openai.com/docs/guides/images).
+Similar to the Stable Diffusion operation this allows you to generate images from text but using the OpenAI DALL-E models instead with the [OpenAI API](https://beta.openai.com/docs/guides/images) taking a `prompt` as input, optionally saves it to the local file library and returning both the original URL and local image file ID.
 ![Demo](examples/dall-e-demo.gif)
+
+**Output**\
+An object containing the ID(s) and URL(s) of the resulting image file(s).
+For a single result:
+```json
+{ "url": "https://some.url", "id": "[UUID]" }
+```
+For multiple results:
+```json
+{ "url": ["https://some.url","https://some.other.url"], "id": ["[UUID]","[UUID]"] }
+```
 
 **Configuration Options**
 1. `Prompt` This is the main text input used for generating the image.
@@ -56,8 +73,14 @@ Similar to the Stable Diffusion operation this allows you to generate images fro
 
 ### GPT-3 Davinci Operation
 
-This operation allows text completion using the OpenAI Davinci models with the [OpenAI API](https://beta.openai.com/docs/guides/completion/introduction).
+This operation allows text completion using the OpenAI Davinci models with the [OpenAI API](https://beta.openai.com/docs/guides/completion/introduction) taking a `prompt` as input and returns the generated text.
 ![Demo](examples/davinci-demo.gif)
+
+**Output**\
+An object containing the generated text:
+```json
+{ "response": "Generated TEXT" }
+```
 
 **Configuration Options**\
 I am by no means an expert in what any of these model specific settings do so please check out the [OpenAI docs](https://beta.openai.com/docs/guides/completion) for that.
