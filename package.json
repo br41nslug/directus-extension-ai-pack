@@ -4,6 +4,7 @@
 	"keywords": [
 		"directus",
 		"directus-extension",
+		"directus-operation",
 		"directus-custom-bundle"
 	],
 	"directus:extension": {
