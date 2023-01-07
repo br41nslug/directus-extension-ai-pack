@@ -7,7 +7,7 @@ export default defineOperationApp({
 	name: 'Stable Diffusion Image Generator',
 	icon: 'image',
 	description: 'Stable Diffusion Image Generator',
-	overview: ({ prompt, engine }) => ([
+	overview: ({ prompt, engine='stable-diffusion-512-v2-1' }) => ([
 		{
 			label: 'Prompt',
 			text: prompt,

@@ -3,7 +3,7 @@ export default {
 	name: 'DALL-E Image Generator',
 	icon: 'image',
 	description: 'DALL-E Image Generator!',
-	overview: ({ text, save_assets }) => [
+	overview: ({ text, save_assets=true }) => [
 		{
 			label: 'Prompt',
 			text: text,
