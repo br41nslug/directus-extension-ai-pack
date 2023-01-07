@@ -34,7 +34,7 @@ export default defineOperationApi({
 		}
 
 		return amount === 1
-			? { url: result[0], id: ids[0] }
+			? { url: result[0], id: ids[0] ?? null }
 			: { url: result, id: ids };
 	},
 });
