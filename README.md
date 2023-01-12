@@ -11,14 +11,14 @@ A small bundle of Flow Operations which enable interaction with the [OpenAI](htt
 The package is published to npm:
 `npm install directus-extension-ai-operation-bundle`
 
-**Manual Installation (should be possible on the next release)**
+**Manual Installation**
 - Download or fork the repository
 - Install the requirements\
   `npm install`
 - Build the extension\
   `npm run build`
 - Move the result to your extension folder\
-  `mv dist extensions/directus-extension-ai-operation-bundle`
+  `mv ./ extensions/directus-extension-ai-operation-bundle`
 - Restart your Directus instance
 
 ## Bundle Content
