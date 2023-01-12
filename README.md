@@ -4,7 +4,7 @@ A small bundle of Flow Operations which enable interaction with the [OpenAI](htt
 
 > Note: To use these you will need an API Key for the respective services.
 
-> Tested with Directus 9.22.1
+> Tested with Directus 9.22.4
 
 ## Installation
 
@@ -17,7 +17,7 @@ The package is published to npm:
   `npm install`
 - Build the extension\
   `npm run build`
-- Move the result to your extension folder\
+- Move the entire project to your extension folder (only the `package.json` and `dist` folder are strictly necessary)\
   `mv ./ extensions/directus-extension-ai-operation-bundle`
 - Restart your Directus instance
 
