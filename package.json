@@ -40,6 +40,14 @@
 				}
 			},
 			{
+				"type": "operation",
+				"name": "chatgpt-operation",
+				"source": {
+					"app": "src/chatgpt-operation/app.js",
+					"api": "src/chatgpt-operation/api.js"
+				}
+			},
+			{
 				"type": "hook",
 				"name": "configuration",
 				"source": "src/configuration/index.js"
@@ -58,7 +66,7 @@
 	},
 	"dependencies": {
 		"node-fetch": "^3.3.0",
-		"openai": "^3.1.0"
+		"openai": "^3.2.0"
 	},
 	"repository": {
 		"type": "git",
