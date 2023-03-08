@@ -9,6 +9,7 @@
 		"directus-custom-bundle"
 	],
 	"directus:extension": {
+		"host": "^9.23.1",
 		"type": "bundle",
 		"path": {
 			"app": "dist/app.js",
@@ -51,9 +52,16 @@
 				"type": "hook",
 				"name": "configuration",
 				"source": "src/configuration/index.js"
+			},
+			{
+				"type": "operation",
+				"name": "whisper-operation",
+				"source": {
+					"app": "src/whisper-operation/app.js",
+					"api": "src/whisper-operation/api.js"
+				}
 			}
-		],
-		"host": "^9.23.1"
+		]
 	},
 	"scripts": {
 		"add": "directus-extension add",
