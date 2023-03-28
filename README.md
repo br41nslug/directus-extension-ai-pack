@@ -4,7 +4,7 @@ A small bundle of Flow Operations which enable interaction with the [OpenAI](htt
 
 > Note: To use these you will need an API Key for the respective services.
 
-> Tested with Directus 9.23.1
+> Tested with Directus 9.23.4
 
 ## Installation
 
