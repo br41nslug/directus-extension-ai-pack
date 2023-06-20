@@ -7,7 +7,7 @@ export class StabilityClient {
         this.engine = engine;
     }
     async txt2img(prompt, options={}) {
-        const url = `${this.api_url}/v1alpha/generation/${this.engine}/text-to-image`;
+        const url = `${this.api_url}/v1/generation/${this.engine}/text-to-image`;
         const response = await fetch(url, {
             method: 'POST',
             headers: {
