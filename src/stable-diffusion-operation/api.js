@@ -1,9 +1,17 @@
 import { defineOperationApi } from '@directus/extensions-sdk';
-import { toArray } from '@directus/utils';
 import { randomUUID } from 'crypto';
 import { StabilityClient } from './client';
 import { stabilityAIField } from '../configuration/fields';
 import { getSetting } from '../lib/util';
+
+function getStorage(env) {
+	if (env['STORAGE_LOCATIONS']) {
+		const locations = String(env['STORAGE_LOCATIONS']);
+		if (locations.includes(',')) return locations.split(',')[0];
+		return locations;
+	}
+	return 'local';
+}
 
 export default defineOperationApi({
 	id: 'stable-diffusion-operation',
@@ -15,11 +23,10 @@ export default defineOperationApi({
 		const schema = await getSchema();
 		const settings = new SettingsService({ schema, knex: database });
 		const files = new FilesService({ schema, knex: database });
-		const storage = toArray(env['STORAGE_LOCATIONS'])[0] || 'local';
+		const storage = getStorage(env);
 
 		const apiKey = await getSetting(settings, stabilityAIField.field, api_key);
 		const stability = new StabilityClient(apiKey, engine);
-
 		const response = await stability.txt2img(prompt, {
 			width, height, cfg_scale, steps
 		});
