@@ -1,7 +1,8 @@
-import { defineOperationApi } from "@directus/extensions-sdk";
 import { Configuration, OpenAIApi } from "openai";
-import { openAIField } from "../configuration/fields";
+
+import { defineOperationApi } from "@directus/extensions-sdk";
 import { getSetting } from "../lib/util";
+import { openAIField } from "../configuration/fields";
 
 export default defineOperationApi({
 	id: "chatgpt-operation",
@@ -36,6 +37,6 @@ export default defineOperationApi({
 		});
 		const response = completion.data.choices[0].message.content;
 
-		return { response: response };
+		return { response: response, usage: completion.data.usage };
 	},
 });
