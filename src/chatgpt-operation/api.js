@@ -1,8 +1,8 @@
-import { Configuration, OpenAIApi } from "openai";
+import { Configuration, OpenAIApi } from "openai"
 
-import { defineOperationApi } from "@directus/extensions-sdk";
-import { getSetting } from "../lib/util";
-import { openAIField } from "../configuration/fields";
+import { defineOperationApi } from "@directus/extensions-sdk"
+import { getSetting } from "../lib/util"
+import { openAIField } from "../configuration/fields"
 
 export default defineOperationApi({
 	id: "chatgpt-operation",
@@ -18,25 +18,36 @@ export default defineOperationApi({
 		},
 		{ services, database, getSchema }
 	) => {
-		const { SettingsService } = services;
-		const schema = await getSchema();
-		const settings = new SettingsService({ schema, knex: database });
+		const { SettingsService } = services
+		const schema = await getSchema()
+		const settings = new SettingsService({ schema, knex: database })
 
-		const apiKey = await getSetting(settings, openAIField.field, api_key);
-		const configuration = new Configuration({ apiKey });
-		const openai = new OpenAIApi(configuration);
+		const apiKey = await getSetting(settings, openAIField.field, api_key)
+		const configuration = new Configuration({ apiKey })
+		const openai = new OpenAIApi(configuration)
 
-		const completion = await openai.createChatCompletion({
-			model: "gpt-3.5-turbo",
-			messages: JSON.parse(messages),
-			temperature,
-			max_tokens,
-			top_p,
-			frequency_penalty,
-			presence_penalty,
-		});
-		const response = completion.data.choices[0].message.content;
+		try {
+			const completion = await openai.createChatCompletion({
+				model: "gpt-3.5-turbo",
+				messages: JSON.parse(messages),
+				temperature,
+				max_tokens,
+				top_p,
+				frequency_penalty,
+				presence_penalty,
+			})
 
-		return { response: response, usage: completion.data.usage };
+			const response = completion.data.choices[0].message.content
+
+			return {
+				response: response,
+				usage: completion.data.usage,
+				finish_reason: completion.data.choices[0].finish_reason,
+			}
+		} catch (err) {
+			console.error(messages)
+			console.log(err)
+			throw err
+		}
 	},
-});
+})
