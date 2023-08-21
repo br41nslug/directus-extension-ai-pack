@@ -121,7 +121,7 @@ export default defineOperationApp({
 		},
 		{
 			field: 'api_key',
-			name: 'Stability Ai API Key Override',
+			name: 'Stability AI API Key Override',
 			type: 'string',
 			meta: {
 				width: 'full',
