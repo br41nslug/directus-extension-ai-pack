@@ -1,4 +1,5 @@
 import { defineOperationApp } from "@directus/extensions-sdk";
+import { gptModelChoices } from "../configuration/fields";
 
 export default defineOperationApp({
 	id: "chatgpt-operation",
@@ -168,6 +169,21 @@ export default defineOperationApp({
 				width: "half",
 				group: "advanced",
 			},
+		},
+		{
+			field: "gpt_model",
+			name: "GPT Model",
+			type: "string",
+			meta: {
+				width: "half",
+				interface: "select-dropdown",
+				options: {
+					allowNone: true,
+					choices: gptModelChoices,
+					placeholder: "Use global default...",
+				},
+				group: "advanced",
+			}
 		},
 		{
 			field: "api_key",

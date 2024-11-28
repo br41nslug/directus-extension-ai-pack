@@ -1,6 +1,6 @@
 {
 	"name": "directus-extension-ai-operation-bundle",
-	"version": "1.0.9",
+	"version": "2.0.0",
 	"author": "brainslug",
 	"keywords": [
 		"directus",
@@ -61,12 +61,12 @@
 		"dev": "directus-extension build -w --no-minify"
 	},
 	"devDependencies": {
-		"@directus/extensions-sdk": "10.1.7",
-		"vue": "^3.3.4"
+		"@directus/extensions-sdk": "12.1.3",
+		"vue": "^3.5.13"
 	},
 	"dependencies": {
 		"node-fetch": "^3.3.2",
-		"openai": "^3.3.0"
+		"openai": "^4.73.1"
 	},
 	"repository": {
 		"type": "git",
